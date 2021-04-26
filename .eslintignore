@@ -1,0 +1,4 @@
+# .eslintignore
+
+bundle.js
+.eslintrc.js
