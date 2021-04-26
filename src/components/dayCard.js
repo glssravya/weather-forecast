@@ -3,7 +3,7 @@ const DayCard = ({data}) => {
     let {maxTemp,minTemp,humidity,icon,iconText,iconDesc} = data;
     return (
         <li className="city">
-            <h2 className="city-name" data-name="New York,US">
+            <h2 className="city-name">
                 <span>{data.day}</span>
             </h2>
             <div className="temperature"><span className="city-maxTemp">{maxTemp}</span><sup>°C</sup>/<span className="city-minTemp">{minTemp}</span><sup>°C</sup></div>
