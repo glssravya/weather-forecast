@@ -14,28 +14,25 @@ const groupByDate = data => {
     }, {}));
 };
 const get5DayData = (data) => {
-    let groupedData = Object.values(groupByDate(data.data.list));
+    let groupedData = Object.values(groupByDate(data.list));
     const daysData = groupedData.length > 5 ? groupedData.slice(0, 5) : groupedData;
     return daysData;
 };
 export default function(state=initialState,action){
-    if (action.error) {
-        action.type = 'FETCH_DATA_ERROR'; 
-    } 
     switch(action.type){
         case FETCH_WEATHER:{
             return {
                 ...state,
-                daysInfo:get5DayData(action.payload),
-                cityInfo:action.payload.data.city,
-                payload:action.payload,
-                error:false
+                daysInfo:get5DayData(action.data),
+                cityInfo:action.data.city,
+                payload:action.data,
+               // error:false
             };   
         }
         case FETCH_DATA_ERROR:{
             return {
                 ...state,
-                error:action.error
+                error:action.error.isAxiosError
             };
         }
         default: 

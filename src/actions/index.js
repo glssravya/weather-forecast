@@ -7,10 +7,16 @@ export const FETCH_WEATHER = 'FETCH_WEATHER';
 export const FETCH_DATA_ERROR = 'FETCH_DATA_ERROR';
 
 export function fetchWeather(city) {   
-    const api = `${BASE_URL}&q=${city}`;
-    const getWeatherData = axios.get(api);
-    return {
-        type:FETCH_WEATHER,
-        payload:getWeatherData
-    };
+    return (dispatch) => {
+        const api = `${BASE_URL}&q=${city}`;
+        axios.get(api)
+        .then(res => {
+            dispatch({type : FETCH_WEATHER, data : res.data});
+        })
+        .catch(error => {
+            dispatch({type : FETCH_DATA_ERROR, error : error});
+        });
+    }
+   
+    
 }

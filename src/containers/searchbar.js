@@ -60,7 +60,11 @@ function mapStateToProps({weather}){
         error:weather.error
     };
 }
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({fetchWeather},dispatch);
-}
+// function mapDispatchToProps(){
+//     return fetchWeather
+//    // return bindActionCreators({fetchWeather},dispatch);
+// }
+const mapDispatchToProps = {
+    fetchWeather
+};
 export default connect(mapStateToProps,mapDispatchToProps )(Searchbar);
